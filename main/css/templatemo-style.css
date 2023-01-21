@@ -38,6 +38,7 @@ h4,
 h5 {
   color: #ffffff;
   font-weight: bold;
+  
 }
 /* end all heading */
 
@@ -275,7 +276,7 @@ h5 {
   margin-bottom: 30px;
 }
 #portfolio .portfolio-thumb .portfolio-overlay {
-  background: #d43f52;
+  background: #da2f45b2;
   top: 0;
   left: 0;
   right: 0;

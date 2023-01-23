@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <title>Study</title>
+    <style>
+      .inline-80 {
+        display: inline-block;
+        width: 80px;
+      }
+    </style>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD9KvwZdZq07mK4UcctSiattbB7_qWX-mk",
+        authDomain: "estudo-crud-93147.firebaseapp.com",
+        databaseURL: "https://estudo-crud-93147-default-rtdb.firebaseio.com",
+        projectId: "estudo-crud-93147",
+        storageBucket: "estudo-crud-93147.appspot.com",
+        messagingSenderId: "250436881390",
+        appId: "1:250436881390:web:402a2887e4f74a5de35cff",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      function signIn() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(function () {
+            console.log("Você está logado!");
+          })
+          .catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log("Login ou senha incorretos!");
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <div>&nbsp;</div>
+
+    <div class="container" id="login-dialog">
+      <form
+        class="col-lg-4 col-lg-offset-4"
+        style="border: 1px solid #aaa; text-align: center"
+      >
+        <div class="form-group">&nbsp;</div>
+        <div class="form-group">
+          <label>Email</label> &nbsp;
+          <input type="text" id="email" />
+        </div>
+        <div class="form-group">
+          <label>Password</label> &nbsp;
+          <input type="password" id="password" />
+        </div>
+        <div class="form-group">
+          <input
+            type="submit"
+            id="login-button"
+            value="Login"
+            class="btn btn-primary"
+          />
+        </div>
+      </form>
+    </div>
+
+    <!--
+    <div class="container" id="listing">
+      <h3>Listing</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Unit of measurement</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>000001</td>
+            <td>aaaaaaaaaaa</td>
+            <td>Pack</td>
+            <td><a href="#" class="btn btn-default">Edit</a> &nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container" id="new-entry">
+      <h3>New Entry</h3>
+      <form>
+        <div class="form-group">
+          <label class="inline-80">Code</label> &nbsp;
+          <input type="text" id="code" />
+        </div>
+        <div class="form-group">
+          <label class="inline-80">Description</label> &nbsp;
+          <input type="text" id="descr" />
+        </div>
+        <div class="form-group">
+          <label class="inline-80">UOM</label> &nbsp;
+          <input type="text" id="uom" />
+        </div>
+        <div class="form-group">
+          <input
+            type="submit"
+            id="save-button"
+            value="Save"
+            class="btn btn-primary"
+          />
+        </div>
+      </form>
+    </div>
+    -->
+
+    <script>
+      document
+        .getElementById("login-button")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          signIn();
+        });
+    </script>
+  </body>
+</html>

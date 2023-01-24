@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login() {
+function Main() {
   console.log();
 }
 export default Main;

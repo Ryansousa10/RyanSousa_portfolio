@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../services/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
 
   function handleLogin(e) {
     signInWithEmailAndPassword(auth, username, password)
@@ -13,6 +16,7 @@ function Login() {
         console.log(userCredential);
         // Signed in
         const user = userCredential.user;
+        setIsAuth(true);
         // ...
       })
       .catch((error) => {
@@ -23,6 +27,12 @@ function Login() {
 
     e.preventDefault();
   }
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/next-page");
+    }
+  }, [isAuth, navigate]);
 
   return (
     <Grid

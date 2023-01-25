@@ -30,7 +30,7 @@ function Login() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/next-page");
+      navigate("/main");
     }
   }, [isAuth, navigate]);
 

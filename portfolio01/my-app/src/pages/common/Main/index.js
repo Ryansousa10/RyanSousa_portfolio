@@ -78,6 +78,7 @@ export default function Main() {
       <TableContainer
         className={`${classes.tableContainer} center-table`}
         component={Paper}
+        style={{ overflow: "auto", maxHeight: "50vh" }}
       >
         <Table className={classes.table} aria-label="simple table">
           <TableHead>

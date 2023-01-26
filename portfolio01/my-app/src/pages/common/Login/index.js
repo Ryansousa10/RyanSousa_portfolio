@@ -1,32 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid, TextField, Button } from "@material-ui/core";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../services/firebase";
 import { useNavigate } from "react-router-dom";
+import { Grid, TextField, Button } from "@material-ui/core";
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
-
-  function handleLogin(e) {
-    signInWithEmailAndPassword(auth, username, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        // Signed in
-        const user = userCredential.user;
-        setIsAuth(true);
-        // ...
-      })
-      .catch((error) => {
-        setUsername("");
-        setPassword("");
-        const errorMessage = alert("Usuário ou senha inválidos!");
-      });
-
-    e.preventDefault();
-  }
 
   useEffect(() => {
     if (isAuth) {
@@ -44,7 +24,7 @@ function Login() {
       style={{ minHeight: "100vh" }}
     >
       <Grid item xs={12}>
-        <h1>Login</h1>
+        <h1>LOGIN</h1>
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -66,7 +46,7 @@ function Login() {
         />
       </Grid>
       <Grid item xs={12}>
-        <Button variant="contained" color="primary" onClick={handleLogin}>
+        <Button variant="contained" color="primary" onClick={""}>
           Sign In
         </Button>
       </Grid>

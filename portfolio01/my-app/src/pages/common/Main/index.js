@@ -72,6 +72,7 @@ export default function Main() {
     const newProducts = products.filter((product) => product.code !== code);
     setProducts(newProducts);
   };
+  
 
   return (
     <>

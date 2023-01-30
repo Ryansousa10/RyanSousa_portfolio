@@ -6,13 +6,16 @@ function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuth, setIsAuth] = useState(false);
 
-  useEffect(() => {
-    if (isAuth) {
+  const handleLogin = () => {
+    if (username == "admin" && password == "admin") {
       navigate("/main");
+    } else {
+      setUsername("");
+      setPassword("");
+      alert("Please enter a username and password");
     }
-  }, [isAuth, navigate]);
+  };
 
   return (
     <Grid
@@ -28,7 +31,7 @@ function Login() {
       </Grid>
       <Grid item xs={12}>
         <TextField
-          label="Email"
+          label="Login: admin"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           fullWidth
@@ -37,7 +40,7 @@ function Login() {
       </Grid>
       <Grid item xs={12}>
         <TextField
-          label="Password"
+          label="Password: admin"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -46,7 +49,11 @@ function Login() {
         />
       </Grid>
       <Grid item xs={12}>
-        <Button variant="contained" color="primary" onClick={""}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleLogin()}
+        >
           Sign In
         </Button>
       </Grid>

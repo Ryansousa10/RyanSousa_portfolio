@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
-import "../../common/Main/";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -22,11 +21,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Main() {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Produto 1", code: "P1", uom: "unidade" },
-    { id: 2, name: "Produto 2", code: "P2", uom: "kg" },
-    { id: 3, name: "Produto 3", code: "P3", uom: "litro" },
-  ]);
+  const [products, setProducts] = useState(() => {
+    const products = JSON.parse(localStorage.getItem("products"));
+    return products
+      ? products
+      : [
+          { id: 1, name: "Produto 1", code: "P1", uom: "unidade" },
+          { id: 2, name: "Produto 2", code: "P2", uom: "kg" },
+          { id: 3, name: "Produto 3", code: "P3", uom: "litro" },
+        ];
+  });
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -35,6 +39,8 @@ export default function Main() {
 
   const handleClose = () => {
     setOpen(false);
+    setNewProduct({ name: "", code: "", uom: "" });
+    setEditProduct({ name: "", code: "", uom: "" });
   };
 
   const handleChange = (e) => {
@@ -43,7 +49,12 @@ export default function Main() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!newProduct.name || !newProduct.code || !newProduct.uom) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
     setProducts([...products, newProduct]);
+    localStorage.setItem("products", JSON.stringify([...products, newProduct]));
     setNewProduct({ name: "", code: "", uom: "" });
     setOpen(false);
   };
@@ -59,11 +70,15 @@ export default function Main() {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    const newProduct = { ...editProduct };
+    if (!editProduct.name || !editProduct.code || !editProduct.uom) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
     const index = products.findIndex((p) => p.id === editProduct.id);
-    let newProducts = [...products];
-    newProducts[index] = newProduct;
+    const newProducts = [...products];
+    newProducts[index] = editProduct;
     setProducts(newProducts);
+    localStorage.setItem("products", JSON.stringify(newProducts));
     setEditProduct({});
     setOpen(false);
   };
@@ -71,23 +86,29 @@ export default function Main() {
   const handleDelete = (code) => {
     const newProducts = products.filter((product) => product.code !== code);
     setProducts(newProducts);
+    localStorage.setItem("products", JSON.stringify(newProducts));
   };
-  
 
   return (
     <>
       <TableContainer
         className={`${classes.tableContainer} center-table`}
         component={Paper}
-        style={{ overflow: "auto", maxHeight: "50vh" }}
+        style={{ overflow: "auto", maxHeight: "50vh", minHeight: "50vh" }}
       >
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Nome do Produto</TableCell>
-              <TableCell align="right">Código</TableCell>
-              <TableCell align="right">UOM</TableCell>
-              <TableCell align="right"></TableCell>
+              <TableCell>
+                <strong>Name</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong>Code</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong>UOM</strong>
+              </TableCell>
+              <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -96,8 +117,8 @@ export default function Main() {
                 <TableCell component="th" scope="row">
                   {product.name}
                 </TableCell>
-                <TableCell align="right">{product.code}</TableCell>
-                <TableCell align="right">{product.uom}</TableCell>
+                <TableCell align="center">{product.code}</TableCell>
+                <TableCell align="center">{product.uom}</TableCell>
                 <TableCell align="right">
                   <Button onClick={() => handleEdit(product)}>Edit</Button>
                   <Button onClick={() => handleDelete(product.code)}>

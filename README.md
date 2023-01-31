@@ -2,7 +2,7 @@
 
 <h3 align="left">🙇 No momento ele ainda está em desenvolvimento, mas sinta-se à vontade para dar uma olhada ;)</h3>
 
-<p align="left">👨‍💻 As tecnologias que estou utilizando até o momento são: HTML, CSS, JS, REACT, MUI e BOOTSTRAP.</p>
+<p align="left">👨‍💻 As tecnologias que estou utilizando até o momento são:</p>
 
 <div align="left">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" width="52"/>

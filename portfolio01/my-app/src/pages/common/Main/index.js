@@ -15,6 +15,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
+    marginTop: "2%",
+    marginBottom: "2%",
     margin: "auto",
     width: "100vh",
   },

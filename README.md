@@ -1,6 +1,6 @@
-<h1 align="left">🙋🏻 Oi! Seja bem vindo ao meu portfólio!</h1>
+<h1 align="left">🙋‍♂️ Oi! Seja bem vindo ao meu portfólio!</h1>
 
-<h3 align="left">🙇🏻 No momento ele ainda está em desenvolvimento, mas sinta-se à vontade para vê-lo!</h3>
+<h3 align="left">🙇 No momento ele ainda está em desenvolvimento, mas sinta-se à vontade para dar uma olhada ;)</h3>
 
 <p align="left">👨‍💻 As tecnologias que estou utilizando até o momento são: HTML, CSS, JS, REACT, MUI e BOOTSTRAP.</p>
 

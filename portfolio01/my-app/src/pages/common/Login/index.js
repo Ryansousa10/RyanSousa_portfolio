@@ -7,7 +7,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  function handleLogin() {
     if (username == "admin" && password == "admin") {
       navigate("/main");
     } else {
@@ -15,7 +15,7 @@ function Login() {
       setPassword("");
       alert("Please enter a username and password");
     }
-  };
+  }
 
   return (
     <Grid
@@ -49,11 +49,7 @@ function Login() {
         />
       </Grid>
       <Grid item xs={12}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => handleLogin()}
-        >
+        <Button variant="contained" color="primary" onClick={handleLogin}>
           Sign In
         </Button>
       </Grid>
